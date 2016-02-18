@@ -20,9 +20,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/leo/leo.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/sm/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := leo
-PRODUCT_NAME := cm_leo
+PRODUCT_NAME := sm_leo
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := MI NOTE Pro
