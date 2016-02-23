@@ -198,6 +198,9 @@ BOARD_SEPOLICY_UNION += \
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# USB
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
+
 # MK Hardware
 BOARD_USES_MOKEE_HARDWARE := true
 BOARD_HARDWARE_CLASS += \

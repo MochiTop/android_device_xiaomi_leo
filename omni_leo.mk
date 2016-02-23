@@ -12,17 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# no DSPManager for us
+TARGET_NO_DSPMANAGER := true
+
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from leo device
-$(call inherit-product, device/xiaomi/leo/leo.mk)
+$(call inherit-product, device/xiaomi/leo/device.mk)
 
-# Inherit some common MK stuff.
-$(call inherit-product, vendor/mk/config/common_full_phone.mk)
-
+PRODUCT_NAME := omni_leo
 PRODUCT_DEVICE := leo
-PRODUCT_NAME := mk_leo
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := MI NOTE Pro
+PRODUCT_BRAND := Xiaomi
+
+# Inherit leo-specific vendor tree
+$(call inherit-product-if-exists, vendor/xiaomi/leo/leo-vendor.mk)
